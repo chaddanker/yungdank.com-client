@@ -2,12 +2,8 @@ import { FETCH_TRACKS } from './types';
 
 import axios from 'axios';
 
-const spotify = axios.create({
-	baseURL: 'https://api.spotify.com/v1/'
-});
-
 const myAPI = axios.create({
-	baseURL: 'http://localhost:8888/'
+	baseURL: 'http://yungdank-api.herokuapp.com/'
 });
 
 export const fetchToken = () => async dispatch => {
