@@ -3,7 +3,7 @@ import { FETCH_TRACKS } from './types';
 import axios from 'axios';
 
 const myAPI = axios.create({
-	baseURL: 'http://yungdank-api.herokuapp.com/'
+	baseURL: 'https://yungdank-api.herokuapp.com/'
 });
 
 export const fetchToken = () => async dispatch => {
