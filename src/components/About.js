@@ -54,7 +54,7 @@ class Beats extends Component {
 	renderList() {
 		return photos.map((photo) => {
 			return (
-				<div key={photo} style={{backgroundImage: `url(images/${photo})`, opacity: 0.5, height: 250, width: 250}}>
+				<div key={photo} style={{backgroundImage: `url(images/${photo})`, height: 250, width: 250}}>
 				</div>
 			);
 		});
@@ -104,11 +104,11 @@ class Beats extends Component {
 				<div class="ui inverted items">
 					<div class="item">
 					    <div class="content">
-					      <div class="description" style={{ color: '#fff', fontWeight: 100, fontSize: '1.5em' }}>
-					        <p>Artist Yung Dank torrents through the underground city of youth culture, risen from the streets of Johannesburg, South Africa. He captures his sound into a fiery fusion between kickback trap and euphoric synth wave beats.
-							His immersive sound is quite addictive to say the least.</p>
-					        <p></p>
-					      </div>
+							<div class="description" style={{ color: '#fff', fontWeight: 100, fontSize: '1.5em' }}>
+								<p>Artist Yung Dank torrents through the underground city of youth culture, risen from the streets of Johannesburg, South Africa. He captures his sound into a fiery fusion between kickback trap and euphoric synth wave beats.
+								His immersive sound is quite addictive to say the least.</p>
+								<p></p>
+							</div>
 					    </div>
 				  	</div>
 				</div>
@@ -116,7 +116,6 @@ class Beats extends Component {
 		);
 	}
 }
-
 
 export default Beats;
 

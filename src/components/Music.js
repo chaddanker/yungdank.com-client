@@ -38,7 +38,7 @@ class Tracks extends Component {
 	renderList() {
 		return this.props.tracks.map(track => {
 			return (
-				<div id={track.uri} key={track.id} style={{backgroundImage: `url(${track.images[1].url})`, opacity: 0.5, height: 250, width: 250}}>
+				<div id={track.uri} key={track.id} style={{backgroundImage: `url(${track.images[1].url})`, height: 250, width: 250}}>
 				</div>
 			);
 		});
