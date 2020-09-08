@@ -7,7 +7,6 @@ import BackButton from './BackButton';
 
 import photos from '../photos';
 
-
 class Beats extends Component {
 
 	constructor(props) {
@@ -54,7 +53,7 @@ class Beats extends Component {
 	renderList() {
 		return photos.map((photo) => {
 			return (
-				<div key={photo} style={{backgroundImage: `url(images/${photo})`, height: 250, width: 250}}>
+				<div key={photo} style={{backgroundImage: `url(images/${photo})`, height: 978 / 3, width: 750 / 3}}>
 				</div>
 			);
 		});

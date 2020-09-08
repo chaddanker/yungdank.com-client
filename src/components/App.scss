@@ -1,9 +1,9 @@
+ 
  body {
     background: #000;
     font-size: 14px;
     margin: 0;
     padding: 0;
-    background-image: url('https://media.giphy.com/media/PlyibXHFkQUF31Mx3X/source.gif');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -14,8 +14,26 @@
     transition: 0.409s;
 }
 
+textarea, input, button {
+  border-radius: 0 !important;
+}
+
+.ytp-chrome-top {
+  visibility: hidden !important;
+}
+
+.container {
+  margin-top: 5em;
+}
+
 .item a:hover {
   font-size: 1.5em;
+  color: #ff0b0b !important;
+  font-weight: 300;
+}
+
+i:hover {
+  color: #ff0b0b !important;
 }
 
 .swiper-container {
