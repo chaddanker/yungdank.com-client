@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Swiper from 'react-id-swiper';
 import "swiper/css/swiper.css";
 
@@ -29,7 +28,7 @@ class Tracks extends Component {
   		if(uri){
 	  		return (
 	  			<div>
-	  				<iframe onLoad={this.hideSpinner} src={`https://embed.spotify.com/?uri=${uri}`} style={{ marginTop: 40 }} width="100%" height="80px" frameBorder="0"></iframe>
+	  				<iframe title="spotify-player" onLoad={this.hideSpinner} src={`https://embed.spotify.com/?uri=${uri}`} style={{ marginTop: 40 }} width="100%" height="80px" frameBorder="0"></iframe>
 				</div>
 	  		);
   		}
@@ -45,16 +44,17 @@ class Tracks extends Component {
 	}
 
 	onSlideChange = () => {
-		this.setState({ selectedSong: this.props.tracks[this.swiperRef.current.swiper.realIndex].uri });
+		const index = this.swiperRef.current ? this.swiperRef.current.swiper.realIndex : 0;
+		this.setState({ selectedSong: this.props.tracks[index].uri });
 	}
 
 	hideSpinner = () => {
 	    this.setState({
 	      loading: false
 	    });
-  	};
-
-	render() {
+	  };
+	  
+	renderSwiper() {
 		const params = {
 			effect: 'coverflow',
 			grabCursor: true,
@@ -69,12 +69,20 @@ class Tracks extends Component {
 			},
 			keyboard: true
 		}
+
+		return (
+		<Swiper {...params} ref={this.swiperRef} shouldSwiperUpdate on={{transitionStart: this.onSlideChange}}>
+			{this.renderList()}
+		</Swiper>
+		);
+	}
+
+	render() {
+
 		return (
 			<div>
 				<BackButton />
-				<Swiper {...params} ref={this.swiperRef} shouldSwiperUpdate on={{transitionStart: this.onSlideChange}}>
-					{this.renderList()}
-				</Swiper>
+				{this.renderSwiper()}
 				{this.state.loading ? <div className="ui active inline loader"></div> : null}
 				{this.renderPlayer(this.state.selectedSong)}
 			</div>

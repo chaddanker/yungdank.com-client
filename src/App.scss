@@ -1,4 +1,4 @@
- 
+//  to do: make variable for site colors
  body {
     background: #000;
     font-size: 14px;
@@ -23,7 +23,7 @@ textarea, input, button {
 }
 
 .container {
-  margin-top: 5em;
+  margin-top: 2em;
 }
 
 .item a:hover {
@@ -47,8 +47,8 @@ i:hover {
 }
 
 .swiper-wrapper {
-
   margin-top: 0px;
+  margin-bottom: 5em;
 }
 
 .swiper-pagination-bullet {

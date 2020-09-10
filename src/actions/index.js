@@ -1,21 +1,6 @@
-import { FETCH_TRACKS } from './types';
+import { FETCH_TRACKS, EMAIL_SENT } from './types';
 
-import axios from 'axios';
-
-const myAPI = axios.create({
-	baseURL: 'https://yungdank-json.herokuapp.com/'
-});
-
-const emailAPI = axios.create({
-	baseURL: 'https://yungdank-api.herokuapp.com/'
-});
-
-export const fetchToken = () => async dispatch => {
-	const response = await myAPI.get('auth_token');
-
-	console.log(response.data.auth_token);
-
-};
+import { myAPI, emailAPI } from '../apis';
 
 export const fetchTracks = () => async dispatch => {
 	const response = await myAPI.get('tracks');
@@ -23,6 +8,8 @@ export const fetchTracks = () => async dispatch => {
 	dispatch({ type: FETCH_TRACKS, payload: response.data });
 };
 
-export const sendEmail = (form) => async () => {
-	await emailAPI.post('send', form);
+export const sendEmail = (form) => async dispatch => {
+	const response = await emailAPI.post('send', form);
+
+	dispatch({ type: EMAIL_SENT, payload: response.data });
 };

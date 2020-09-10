@@ -21,3 +21,5 @@ export default [
 	'untitled444.wav',
 	'worldwide.mp3'
 ];
+
+// list of beat names for about page

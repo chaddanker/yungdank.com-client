@@ -5,3 +5,5 @@ export default [
 	'4.jpg',
 	'5.jpg'
 ];
+
+// list of photo names for about page

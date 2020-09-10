@@ -1,11 +1,10 @@
 import React, { Component, createRef } from 'react';
-import { Link } from 'react-router-dom';
 import Swiper from 'react-id-swiper';
 import "swiper/css/swiper.css";
 
 import BackButton from './BackButton';
 
-import beats from '../beats';
+import beats from '../data/beats';
 
 class Beats extends Component {
 
@@ -41,7 +40,7 @@ class Beats extends Component {
 	renderList() {
 		return beats.map(beat => {
 			return (
-				<div className="beat" id={beat} key={beat} style={{ height: 250, width: 250}}>
+				<div className="beat" id={beat} key={beat} style={{ height: 250, width: 250, backgroundColor: '#ff0b0b'}}>
 					<div className="ui inverted centered header" style={{ height: '20%', margin: '40% 0', fontFamily: 'Gothic', fontSize: '2.5em', fontWeight: 100}}>
 						{this.replaceDashes(beat).slice(0, beat.length - 4)}
 					</div>
@@ -51,7 +50,9 @@ class Beats extends Component {
 	}
 
 	onSlideChange = () => {
-		this.setState({ selectedBeat: beats[this.swiperRefBeats.current.swiper.realIndex] },() => {
+		this.setState({ 
+			selectedBeat: beats[this.swiperRefBeats.current.swiper.realIndex] 
+		},() => {
             this.refs.audio.pause();
             this.refs.audio.load();
        });
@@ -74,7 +75,7 @@ class Beats extends Component {
 			stretch: 0,
 			depth: 100,
 			modifier: 1,
-			slideShadows: true
+			slideShadows: false
 			},
 			keyboard: true
 	};
@@ -101,5 +102,3 @@ class Beats extends Component {
 
 
 export default Beats;
-
-/** to do: make swiper component reusable **/

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import './components/App.scss';
+import './App.scss';
 
 import Music from './components/Music';
 import Beats from './components/Beats';

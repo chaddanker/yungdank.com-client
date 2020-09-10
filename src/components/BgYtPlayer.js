@@ -1,35 +1,39 @@
-import React, { Component } from 'react';
+
+// background youtube video player component
+import React, { Component, createRef } from 'react';
 import YouTube from 'react-youtube';
 
 import './BgYtPlayer.scss';
 
-class Video extends Component {
+class BgYtPlayer extends Component {
 
-    state = {
-        window: {
-            height: window.innerHeight,
-            width: window.innerWidth
-        },
-        visible: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            window: {
+                height: window.innerHeight,
+                width: window.innerWidth
+            },
+            visible: false
+        };
+        this.playerRef = createRef();
+    }
 
-    _onReady(event) {
-        // access to player in all event handlers via event.target
-        event.target.playVideo();
-      }
-      
-      _onEnd(event) {
-        event.target.playVideo();
-      }
-
-    componentDidMount = () => {
-        window.addEventListener('resize', this.resize);
-
-        this.timer = setTimeout(() => {
+    _onReady = (event) => {
+        setTimeout(() => {
             this.setState({
                 visible: true
             });
-        }, 4000);
+            event.target.playVideo();
+        }, 1000);
+      }
+      
+    _onEnd(event) {
+        event.target.playVideo();
+    }
+
+    componentDidMount = () => {
+        window.addEventListener('resize', this.resize);
     }
 
     resize = () => {
@@ -55,17 +59,21 @@ class Video extends Component {
               loop: 1,
               mute: 1
             }
-          };
-
+        };
+        const { visible } = this.state;
         return (
     <div className="video-background">
         <div className="video-foreground">
             <YouTube
+                ref={this.playerRef}
                 videoId="Q_3r8R3YSk0"
                 opts={videoOptions}
                 className="video-iframe"
                 onReady={this._onReady}
                 onEnd={this._onEnd}
+                style={{
+                    visible: `${visible ? 'visible' : 'hidden'}`
+                }}
             />
         </div>
     </div>
@@ -73,4 +81,4 @@ class Video extends Component {
     }
 }
 
-export default Video;
+export default BgYtPlayer;
